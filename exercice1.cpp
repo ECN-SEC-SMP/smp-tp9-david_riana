@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-#include "exercice1.h"
+
 
 using namespace std;
 
@@ -54,6 +54,6 @@ int main(){
     for(std::vector<int>::iterator it = vect_copie.begin();it != vect_copie.end(); it++){
         cout << *it << endl;
     }
-    
+
     return 0;
 }
