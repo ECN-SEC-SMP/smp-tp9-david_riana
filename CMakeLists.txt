@@ -4,3 +4,4 @@ project(smp_tp9_david_riana)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(smp_tp9_david_riana main.cpp)
+add_executable(exercice2 exercice2.cpp)
