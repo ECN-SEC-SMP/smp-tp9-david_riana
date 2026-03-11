@@ -36,11 +36,24 @@ int main(){
     //Ajout d'un nouvel élément en fin de vector
     cout << "-- Ajout d'un nouvel élément en fin de vector --" << endl ;
     vect.push_back(4);
-    cout << "Nv taille du vector = " << vect[3] << endl;
+    cout << "Nv taille du vector = " << vect.size() << endl;
     //Affichage du nv vector
     cout << "-- Affichage du nouveau vector --" << endl ;
     for(std::vector<int>::iterator it = vect.begin();it != vect.end(); it++){
         cout << *it << endl;
     }
+
+    // Copie du vector vect dans n vector vect_copie
+    cout << "-- Copie du vector vect dans n vector vect_copie --" << endl ;
+    vector<int> vect_copie;
+    vect_copie.resize(vect.size());
+    copy(vect.begin(),vect.end(),vect_copie.begin());
+
+    //Affichage de la copie du vecteur
+    cout << "-- Affichage de la copie du vecteur --" << endl ;
+    for(std::vector<int>::iterator it = vect_copie.begin();it != vect_copie.end(); it++){
+        cout << *it << endl;
+    }
+    
     return 0;
 }
