@@ -32,5 +32,15 @@ int main(){
     for(std::vector<int>::iterator it = vect.begin();it != vect.end(); it++){
         cout << *it << endl;
     }
+
+    //Ajout d'un nouvel élément en fin de vector
+    cout << "-- Ajout d'un nouvel élément en fin de vector --" << endl ;
+    vect.push_back(4);
+    cout << "Nv taille du vector = " << vect[3] << endl;
+    //Affichage du nv vector
+    cout << "-- Affichage du nouveau vector --" << endl ;
+    for(std::vector<int>::iterator it = vect.begin();it != vect.end(); it++){
+        cout << *it << endl;
+    }
     return 0;
 }
