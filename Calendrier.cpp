@@ -32,3 +32,47 @@ void Calendrier::save(const string & filename) const {
         file << endl;
     }
 }
+
+/**
+ * Charge le calendrier à partir d'un fichier CSV séparé par des points virgules
+ * @param isOk Indique si le chargement du calendrier a réussi ou non
+ * @param filename Le nom du fichier à partir duquel le calendrier doit être chargé
+ */
+Calendrier Calendrier::load(const string &filename, bool & isOk) {
+    fstream file(filename, ios::in);
+    Calendrier cal;
+    string line;
+
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            // Trouver l'annee
+            auto it = find(line.begin(), line.end(), ';');
+            if (it != line.end()) {
+                int annee = stoi(string(line.begin(), it));
+
+                // Avancer après le séparateur de l'année
+                ++it;
+                while (it != line.end()) {
+                    auto prochain_sep = find(it, line.end(), ';');
+
+                    if (prochain_sep == line.end()) break;
+
+                    string evenement(it, prochain_sep);
+
+                    if (!evenement.empty()) {
+                        cal.ajoute_evenement(annee, evenement);
+                    }
+                    it = prochain_sep;
+                    ++it;
+                }
+
+                isOk = true;
+            }
+        }
+        file.close();
+    } else {
+        cerr << "Unable to open file " << filename << endl;
+        isOk = false;
+    }
+    return cal;
+}

@@ -24,7 +24,7 @@ public:
     };
 
     void save(const string & filename) const;
-    void load(string & filename);
+    static Calendrier load(const string & filename, bool & isOk);
 
     calendrier_t &getCalendrier() {
         return calendrier_;
